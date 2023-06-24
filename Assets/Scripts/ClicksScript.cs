@@ -70,6 +70,10 @@ public class ClicksScript : MonoBehaviour
         return -1;
         
     }
+    public int checkHex(int[] lines)
+    {
+        return checkHex(lines[0], lines[1], lines[2], lines[3], lines[4], lines[5]);
+    }
     public bool checkHexOne(int bs, int bls, int tls, int ts, int trs, int brs)
     {
         if (bs == 2 && bls == 2 && tls == 2 && ts == 2 && trs == 2 && brs == 2)

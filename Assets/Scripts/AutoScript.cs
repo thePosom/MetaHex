@@ -46,7 +46,7 @@ public class AutoScript : MonoBehaviour
                 if (ratiod(hexNum, hexOrder) && autoHex(hexNum + 1, lines))
                     return true;
                 hex.setHexSides(linesCopy);
-                usedMods[idealHex.checkHex(hexOrder[0], hexOrder[1], hexOrder[2], hexOrder[3], hexOrder[4], hexOrder[5]) - 1]--;
+                usedMods[idealHex.checkHex(hexOrder) - 1]--;
             }
             lines = (int[])linesCopy.Clone();
             slider(hexOrder);
@@ -56,7 +56,7 @@ public class AutoScript : MonoBehaviour
     }
     public bool ratiod(int hexNum, int[] hexOrder)
     {
-        usedMods[idealHex.checkHex(hexOrder[0], hexOrder[1], hexOrder[2], hexOrder[3], hexOrder[4], hexOrder[5])-1]++;
+        usedMods[idealHex.checkHex(hexOrder)-1]++;
         ////
         int thisNum = hexesTotal / allowedMods.Length;
         for (int i = 0; i < 8; i++)

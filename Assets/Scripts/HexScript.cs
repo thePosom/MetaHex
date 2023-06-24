@@ -88,8 +88,14 @@ public class HexScript : MonoBehaviour
             this.transform.Find("LineTopRight").transform.Find("PressOut").GetComponent<ButtonPressOut>().Clicked();
         if (trs == 2)
             this.transform.Find("LineTopRight").transform.Find("PressOut").GetComponent<ButtonPressOut>().Clicked();
-    }
 
+        if (brs == 0)
+            this.transform.Find("LineBottomRight").transform.Find("PressIn").GetComponent<ButtonPressIn>().Clicked();
+        if (brs == 1)
+            this.transform.Find("LineBottomRight").transform.Find("PressOut").GetComponent<ButtonPressOut>().Clicked();
+        if (brs == 2)
+            this.transform.Find("LineBottomRight").transform.Find("PressOut").GetComponent<ButtonPressOut>().Clicked();
+    }
     public void sideHexs()
     {
         int h = HexeMatrixScript.height;
@@ -145,7 +151,6 @@ public class HexScript : MonoBehaviour
         else
             TopRightHex = GameObject.Find("HexClone " + (hexNum - h * l + h)).GetComponent<HexScript>();
     }
-        
     public int stringToInt(string a)
     {
         string n = string.Empty;
@@ -293,6 +298,85 @@ public class HexScript : MonoBehaviour
         if (x == 2)
             this.transform.Find("LineBottomRight").transform.Find("PressOut").GetComponent<ButtonPressOut>().Clicked();
     }
+    public void setBottomA(int x, bool first)
+    {
+        bs = x;
+        if (first)
+        {
+            if (x == 0) 
+                BottomHex.setTopA(2, false);
+            if (x == 1) 
+                BottomHex.setTopA(1, false);
+            if (x == 2)
+                BottomHex.setTopA(0, false);
+        }
+    }
+    public void setBottomLeftA(int x, bool first)
+    {
+        bls = x;
+        if (first)
+        {
+            if (x == 0)
+                BottomLeftHex.setTopRightA(2, false);
+            if (x == 1)
+                BottomLeftHex.setTopRightA(1, false);
+            if (x == 2)
+                BottomLeftHex.setTopRightA(0, false);
+        }
+    }
+    public void setTopLeftA(int x, bool first)
+    {
+        tls = x;
+        if (first)
+        {
+            if (x == 0)
+                TopLeftHex.setBottomRightA(2, false);
+            if (x == 1)
+                TopLeftHex.setBottomRightA(1, false);
+            if (x == 2)
+                TopLeftHex.setBottomRightA(0, false);
+        }
+    }
+    public void setTopA(int x, bool first)
+    {
+        ts = x;
+        if (first)
+        {
+            if (x == 0)
+                TopHex.setBottomA(2, false);
+            if (x == 1)
+                TopHex.setBottomA(1, false);
+            if (x == 2)
+                TopHex.setBottomA(0, false);
+
+        }
+    }
+    public void setTopRightA(int x, bool first)
+    {
+        trs = x;
+        if (first)
+        {
+            if (x == 0)
+                TopRightHex.setBottomLeftA(2, false);
+            if (x == 1)
+                TopRightHex.setBottomLeftA(1, false);
+            if (x == 2)
+                TopRightHex.setBottomLeftA(0, false);
+        }
+    }
+    public void setBottomRightA(int x, bool first)
+    {
+        brs = x;
+        if (first)
+        {
+            if (x == 0)
+                BottomRightHex.setTopLeftA(2, false);
+            if (x == 1)
+                BottomRightHex.setTopLeftA(1, false);
+            if (x == 2)
+                BottomRightHex.setTopLeftA(0, false);
+        }
+    }
     public void setHexSides(int b, int bl, int tl, int t, int tr, int br)
     {
         setBottom(b, true);
@@ -304,11 +388,11 @@ public class HexScript : MonoBehaviour
     }
     public void setHexSides(int[] lines)
     {
-        setBottom(lines[0], true);
-        setBottomLeft(lines[1], true);
-        setTopLeft(lines[2], true);
-        setTop(lines[3], true);
-        setTopRight(lines[4], true);
-        setBottomRight(lines[5], true);
+        setBottomA(lines[0], true);
+        setBottomLeftA(lines[1], true);
+        setTopLeftA(lines[2], true);
+        setTopA(lines[3], true);
+        setTopRightA(lines[4], true);
+        setBottomRightA(lines[5], true);
     }
 }
