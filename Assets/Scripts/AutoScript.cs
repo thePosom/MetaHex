@@ -11,6 +11,7 @@ public class AutoScript : MonoBehaviour
     public HexeMatrixScript HexeMatrixScript;
     public ClicksScript idealHex;
     public SpriteRenderer wrongX;
+    public GameObject UI;
 
     public void starter()
     {
@@ -19,6 +20,39 @@ public class AutoScript : MonoBehaviour
         allowedMods = setFlops();
 
         autoHex();
+    }
+
+    public void autoHex()
+    {
+        int[] order = new int[6];
+        order = nextMod(order, 0);
+        if (!autoHex(0, order))
+            wrongX.enabled = true;
+        else
+        {
+            for (int i = 0; i < hexesTotal; i++)
+            {
+                HexScript hex = GameObject.Find("HexClone " + i).GetComponent<HexScript>();
+                hex.updateHex();
+            }
+            screeni();
+        }
+    }
+
+    public void screeni()
+    {
+        UI.SetActive(false);
+        int x = flopsList();
+        ScreenCapture.CaptureScreenshot(System.IO.Path.Combine("autoSolves", x + ".png"));
+        
+    }
+
+    public int flopsList()
+    {
+        int x = 0;
+        for (int i = 0; i < allowedMods.Length; i++)
+            x = x * 10 + allowedMods[i];
+        return x;
     }
 
     public bool autoHex(int hexNum, int[] order)
@@ -119,18 +153,6 @@ public class AutoScript : MonoBehaviour
             return hexOrder;
         }
         return hexOrder;
-    }
-    public void autoHex()
-    {
-        int[] order = new int[6];
-        order = nextMod(order, 0);
-        if (!autoHex(0, order))
-            wrongX.enabled = true;
-        for(int i = 0; i < hexesTotal; i++)
-        {
-            HexScript hex = GameObject.Find("HexClone " + i).GetComponent<HexScript>();
-            hex.updateHex();
-        }
     }
     public void reverse(int[] HexOrder)
     {

@@ -18,6 +18,7 @@ public class SendSizeScript : MonoBehaviour
     public Toggle flop7;
     public Toggle flop8;
     public Toggle auto;
+    public Toggle moreAuto;
     public int flon1 = 0;
     public int flon2 = 0;
     public int flon3 = 0;
@@ -27,6 +28,7 @@ public class SendSizeScript : MonoBehaviour
     public int flon7 = 0;
     public int flon8 = 0;
     public int automo = 0;
+    public int moreAutomo = 1;
 
     void Start()
     {
@@ -54,6 +56,8 @@ public class SendSizeScript : MonoBehaviour
             flon8 = 1;
         if (auto.isOn)
             automo = 1;
+        if (moreAuto.isOn)
+            moreAutomo = 0;
         return flon1==1 || flon2 == 1 || flon3 == 1 || flon4 == 1 || flon5 == 1 || flon6 == 1 || flon7 == 1 || flon8 == 1;
     }
 
@@ -76,6 +80,7 @@ public class SendSizeScript : MonoBehaviour
             PlayerPrefs.SetInt("floppy7", flon7);
             PlayerPrefs.SetInt("floppy8", flon8);
             PlayerPrefs.SetInt("auto", automo);
+            PlayerPrefs.SetInt("done", moreAutomo);
             SceneManager.LoadScene(1);
         }
     }

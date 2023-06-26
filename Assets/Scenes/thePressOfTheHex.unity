@@ -2841,7 +2841,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 262395445}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -7562,7 +7561,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 1073044844}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -7788,7 +7786,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 1704149174}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -8344,7 +8341,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 2057269040}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -9361,7 +9357,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 1102636681}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -10329,7 +10324,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 822519971}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -13379,7 +13373,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 628563949}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -21084,7 +21077,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 1731784284}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -23405,7 +23397,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 866757039}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -24105,7 +24096,9 @@ MonoBehaviour:
   Hexegon: {fileID: 1787956644658044718, guid: 02893471f36d4cb4eaba53010ebb853c, type: 3}
   first: {fileID: 0}
   firstText: {fileID: 1330068908}
+  UI: {fileID: 328954134}
   AutoScript: {fileID: 671916661}
+  ResetScript: {fileID: 671916660}
   height: 3
   length: 4
   hDiff: 8.43
@@ -24175,7 +24168,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 1964583204}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -27605,7 +27597,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 1223610766}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -27812,6 +27803,7 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 595890782}
   idealHex: {fileID: 671916659}
   wrongX: {fileID: 316955215}
+  UI: {fileID: 328954134}
 --- !u!1 &672525269
 GameObject:
   m_ObjectHideFlags: 0
@@ -30763,7 +30755,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 994127732}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -33105,7 +33096,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 1369692321}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -36722,7 +36712,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 2092403854}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -36877,7 +36866,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 1339623999}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -37716,7 +37704,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 535884713}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -46259,7 +46246,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 472626698}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -48176,7 +48162,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 818100019}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -50947,7 +50932,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 1926318361}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -57125,7 +57109,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 1365681701}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -62958,7 +62941,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 1991432459}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -65354,7 +65336,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 1430605124}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -69078,7 +69059,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 1907909603}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -70801,7 +70781,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 432767383}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -73042,7 +73021,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 1808083269}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -76500,7 +76478,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 758946289}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -78031,7 +78008,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 1353031791}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -80450,7 +80426,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 162348162}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -81946,7 +81921,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 747624655}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -85239,7 +85213,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 1732109069}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}
@@ -87695,7 +87668,6 @@ MonoBehaviour:
   HexeMatrixScript: {fileID: 0}
   xHex: {fileID: 1524942302}
   hexText: {fileID: 0}
-  legal: 1
   BottomHex: {fileID: 0}
   BottomRightHex: {fileID: 0}
   BottomLeftHex: {fileID: 0}

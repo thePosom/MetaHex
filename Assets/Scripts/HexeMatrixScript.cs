@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using System.Reflection;
 
 public class HexeMatrixScript : MonoBehaviour
 {
     public GameObject Hexegon;
     public GameObject first;
     public GameObject firstText;
+    public GameObject UI;
     public AutoScript AutoScript;
+    public ResetScript ResetScript;
     public int height;
     public int length;
     public float hDiff;
@@ -31,17 +34,249 @@ public class HexeMatrixScript : MonoBehaviour
         spawner(height,length);
         setFlops();
         yield return new WaitForSeconds(0.05f);
+
+        //arrayToFlops(flopsToArray());
         if ((!PlayerPrefs.HasKey("auto")) || PlayerPrefs.GetInt("auto") == 1)
         {
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-
             AutoScript.starter();
 
-            long elapsedMilliseconds = stopwatch.ElapsedMilliseconds;
-            UnityEngine.Debug.Log("Time elapsed: " + elapsedMilliseconds + " ms");
+            yield return new WaitForSeconds(0.05f);
+            UI.SetActive(true);
         }
         //PlayerPrefs.DeleteKey("auto");
+        int x = PlayerPrefs.GetInt("done");
+        if (PlayerPrefs.GetInt("done") == 0)
+            autoProject();
+    }
+    public void autoProject()
+    {
+        PlayerPrefs.SetInt("done", 0);
+        bool[] a = flopsToArray();
+
+        int x = findLastUntilPoint(a);
+        a[x] = false;
+        if (x!=7)
+        {
+            a[x+1] = true;
+            arrayToFlops(a);
+            UnityEngine.Debug.Log(a[0] + ", " + a[1] + ", " + a[2] + ", " + a[3] + ", " + a[4] + ", " + a[5] + ", " + a[6] + ", " + a[7]);
+            ResetScript.reset(true);
+        }
+        else
+        {
+            int y = findLastUntilPoint(a);
+            a[y] = false;
+            if (y != 6)
+            {
+                a[y + 1] = true;
+                a[y + 2] = true;
+                arrayToFlops(a);
+                UnityEngine.Debug.Log(a[0] + ", " + a[1] + ", " + a[2] + ", " + a[3] + ", " + a[4] + ", " + a[5] + ", " + a[6] + ", " + a[7]);
+                ResetScript.reset(true);
+            }
+            else
+            {
+                int z = findLastUntilPoint(a);
+                a[z] = false;
+                if (z != 5)
+                {
+                    a[z + 1] = true;
+                    a[z + 2] = true;
+                    a[z + 3] = true;
+                    arrayToFlops(a);
+                    UnityEngine.Debug.Log(a[0] + ", " + a[1] + ", " + a[2] + ", " + a[3] + ", " + a[4] + ", " + a[5] + ", " + a[6] + ", " + a[7]);
+                    ResetScript.reset(true);
+                }
+                else
+                {
+                    int w = findLastUntilPoint(a);
+                    a[w] = false;
+                    if (w != 4)
+                    {
+                        a[w + 1] = true;
+                        a[w + 2] = true;
+                        a[w + 3] = true;
+                        a[w + 4] = true;
+                        arrayToFlops(a);
+                        UnityEngine.Debug.Log(a[0] + ", " + a[1] + ", " + a[2] + ", " + a[3] + ", " + a[4] + ", " + a[5] + ", " + a[6] + ", " + a[7]);
+                        ResetScript.reset(true);
+                    }
+                    else
+                    {
+                        int q = findLastUntilPoint(a);
+                        a[q] = false;
+                        if (q != 3)
+                        {
+                            a[q + 1] = true;
+                            a[q + 2] = true;
+                            a[q + 3] = true;
+                            a[q + 4] = true;
+                            a[q + 5] = true;
+                            arrayToFlops(a);
+                            UnityEngine.Debug.Log(a[0] + ", " + a[1] + ", " + a[2] + ", " + a[3] + ", " + a[4] + ", " + a[5] + ", " + a[6] + ", " + a[7]);
+                            ResetScript.reset(true);
+                        }
+                        else
+                        {
+                            int u = findLastUntilPoint(a);
+                            a[u] = false;
+                            if (u != 2)
+                            {
+                                a[u + 1] = true;
+                                a[u + 2] = true;
+                                a[u + 3] = true;
+                                a[u + 4] = true;
+                                a[u + 5] = true;
+                                a[u + 6] = true;
+                                arrayToFlops(a);
+                                UnityEngine.Debug.Log(a[0] + ", " + a[1] + ", " + a[2] + ", " + a[3] + ", " + a[4] + ", " + a[5] + ", " + a[6] + ", " + a[7]);
+                                ResetScript.reset(true);
+                            }
+                            else
+                            {
+                                int t = findLastUntilPoint(a);
+                                a[t] = false;
+                                if (t != 1)
+                                {
+                                    a[t + 1] = true;
+                                    a[t + 2] = true;
+                                    a[t + 3] = true;
+                                    a[t + 4] = true;
+                                    a[t + 5] = true;
+                                    a[t + 6] = true;
+                                    a[t + 7] = true;
+                                    arrayToFlops(a);
+                                    UnityEngine.Debug.Log(a[0] + ", " + a[1] + ", " + a[2] + ", " + a[3] + ", " + a[4] + ", " + a[5] + ", " + a[6] + ", " + a[7]);
+                                    ResetScript.reset(true);
+                                }
+                                else
+                                {
+                                    a[0] = true;
+                                    a[1] = true;
+                                    a[2] = true;
+                                    a[3] = true;
+                                    a[4] = true;
+                                    a[5] = true;
+                                    a[6] = true;
+                                    a[7] = true;
+                                    arrayToFlops(a);
+                                    PlayerPrefs.SetInt("done", 1);
+                                    UnityEngine.Debug.Log(a[0] + ", " + a[1] + ", " + a[2] + ", " + a[3] + ", " + a[4] + ", " + a[5] + ", " + a[6] + ", " + a[7]);
+                                    ResetScript.reset(true);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+                 
+    }
+    public int findLastUntilPoint(bool[] a)
+    {
+        int x=-1;
+        for (int i = 0; i < a.Length; i++)
+        {
+            if (a[i])
+                x = i;
+        }
+        if(x!=-1)
+            return x;
+        PlayerPrefs.SetInt("done", 1);
+        ResetScript.reset(true);
+        return x;
+    }
+    public bool[] flopsToArray()
+    {
+        bool[] x = new bool[8];
+        for(int i = 0; i < 8; i++)
+        {
+            if ((bool)GetType().GetField(("floppy" + (i + 1)), BindingFlags.Public | BindingFlags.Instance)?.GetValue(this))
+                x[i] = true;
+        }
+        return x;
+    }
+    //ss
+    public void arrayToFlops(bool[] n)
+    {
+        floppy1 = false;
+        floppy2 = false;
+        floppy3 = false;
+        floppy4 = false;
+        floppy5 = false;
+        floppy6 = false;
+        floppy7 = false;
+        floppy8 = false;
+        for (int i = 0; i < 8; i++)
+        {
+            if (n[i])
+            {
+                FieldInfo field = GetType().GetField(("floppy" + (i+1)), BindingFlags.Public | BindingFlags.Instance);
+                field?.SetValue(this, true);
+            }
+        }
+        int flon1 = 0;
+        int flon2 = 0;
+        int flon3 = 0;
+        int flon4 = 0;
+        int flon5 = 0;
+        int flon6 = 0;
+        int flon7 = 0;
+        int flon8 = 0;
+
+        if (floppy1)
+            flon1 = 1;
+        if (floppy2)
+            flon2 = 1;
+        if (floppy3)
+            flon3 = 1;
+        if (floppy4)
+            flon4 = 1;
+        if (floppy5)
+            flon5 = 1;
+        if (floppy6)
+            flon6 = 1;
+        if (floppy7)
+            flon7 = 1;
+        if (floppy8)
+            flon8 = 1;
+
+        PlayerPrefs.SetInt("floppy1", flon1);
+        PlayerPrefs.SetInt("floppy2", flon2);
+        PlayerPrefs.SetInt("floppy3", flon3);
+        PlayerPrefs.SetInt("floppy4", flon4);
+        PlayerPrefs.SetInt("floppy5", flon5);
+        PlayerPrefs.SetInt("floppy6", flon6);
+        PlayerPrefs.SetInt("floppy7", flon7);
+        PlayerPrefs.SetInt("floppy8", flon8);
+    }
+    public int flopsToNum()
+    {
+        int x = 0;
+        for(int i = 1; i <= 8; i++)
+        {
+            if ((bool)GetType().GetField(("floppy" + i), BindingFlags.Public | BindingFlags.Instance)?.GetValue(this))
+                x = x * 10 + i;
+        }
+        return x;
+    }
+    public void numToFlops(int n)
+    {
+        floppy1 = false;
+        floppy2 = false;
+        floppy3 = false;
+        floppy4 = false;
+        floppy5 = false;
+        floppy6 = false;
+        floppy7 = false;
+        floppy8 = false;
+        while (n != 0)
+        {
+            FieldInfo field = GetType().GetField(("floppy" + n % 10), BindingFlags.Public | BindingFlags.Instance);
+            field?.SetValue(this, true);
+            //(bool)GetType().GetField(("floppy" + n % 10), BindingFlags.Public | BindingFlags.Instance)?.GetValue(this) = true;
+            n = n / 10;
+        }
     }
     public bool checkHex(int type)
     {

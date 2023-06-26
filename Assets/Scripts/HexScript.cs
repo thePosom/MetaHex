@@ -95,6 +95,12 @@ public class HexScript : MonoBehaviour
             this.transform.Find("LineBottomRight").transform.Find("PressOut").GetComponent<ButtonPressOut>().Clicked();
         if (brs == 2)
             this.transform.Find("LineBottomRight").transform.Find("PressOut").GetComponent<ButtonPressOut>().Clicked();
+
+        hexType = idealHex.checkHex(bs, bls, tls, ts, trs, brs);
+        if (hexType != -1)
+            hexText.text = hexType.ToString();
+        else
+            hexText.text = " ";
     }
     public void sideHexs()
     {
