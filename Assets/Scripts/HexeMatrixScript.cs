@@ -34,6 +34,7 @@ public class HexeMatrixScript : MonoBehaviour
         starterCoords();
         spawner(height,length);
         setFlops();
+        UI.SetActive(false);
         yield return new WaitForSeconds(0.05f);
 
         //arrayToFlops(flopsToArray());
@@ -42,10 +43,10 @@ public class HexeMatrixScript : MonoBehaviour
             AutoScript.starter(PlayerPrefs.GetInt("variations"));
 
             yield return new WaitForSeconds(0.05f);
-            UI.SetActive(true);
+            
         }
         //PlayerPrefs.DeleteKey("auto");
-        variations();
+        //variations();
         if (PlayerPrefs.GetInt("done") == 0 && PlayerPrefs.GetInt("variations") == 0)
             autoProject();
     }
@@ -57,6 +58,7 @@ public class HexeMatrixScript : MonoBehaviour
             PlayerPrefs.SetInt("variations", x+1);
             ResetScript.reset(true);
         }
+        UI.SetActive(true);
     }
     public void autoProject()
     {
