@@ -14,6 +14,7 @@ public class HexeMatrixScript : MonoBehaviour
     public ResetScript ResetScript;
     public int height;
     public int length;
+    public int very;
     public float hDiff;
     public float LDiffX;
     public float LDiffY;
@@ -38,18 +39,29 @@ public class HexeMatrixScript : MonoBehaviour
         //arrayToFlops(flopsToArray());
         if ((!PlayerPrefs.HasKey("auto")) || PlayerPrefs.GetInt("auto") == 1)
         {
-            AutoScript.starter();
+            AutoScript.starter(PlayerPrefs.GetInt("variations"));
 
             yield return new WaitForSeconds(0.05f);
             UI.SetActive(true);
         }
         //PlayerPrefs.DeleteKey("auto");
-        int x = PlayerPrefs.GetInt("done");
-        if (PlayerPrefs.GetInt("done") == 0)
+        variations();
+        if (PlayerPrefs.GetInt("done") == 0 && PlayerPrefs.GetInt("variations") == 0)
             autoProject();
+    }
+    public void variations()
+    {
+        int x = PlayerPrefs.GetInt("variations");
+        if(x!=0)
+        {
+            PlayerPrefs.SetInt("variations", x+1);
+            ResetScript.reset(true);
+        }
     }
     public void autoProject()
     {
+        if (PlayerPrefs.GetInt("variMuch") == 1)
+            PlayerPrefs.SetInt("variations", 1);
         PlayerPrefs.SetInt("done", 0);
         bool[] a = flopsToArray();
 
@@ -169,8 +181,7 @@ public class HexeMatrixScript : MonoBehaviour
                     }
                 }
             }
-        }
-                 
+        }    
     }
     public int findLastUntilPoint(bool[] a)
     {
