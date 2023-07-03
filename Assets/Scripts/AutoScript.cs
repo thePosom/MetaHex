@@ -18,8 +18,10 @@ public class AutoScript : MonoBehaviour
 
     public void starter(int i)
     {
-        vari = i - 1;
-        varia = i - 1;
+        //vari = i - 1;
+        //varia = i - 1;
+        vari = 0;
+        varia = 0;
         times = 0;
         hexesTotal = HexeMatrixScript.height * HexeMatrixScript.length;
         usedMods = new int[8];
@@ -51,12 +53,28 @@ public class AutoScript : MonoBehaviour
         Debug.Log(times);
     }
 
-
+    public bool variant()
+    {
+        if (vari == -1)
+            return true;
+        else
+        {
+            varia++;
+            for (int i = 0; i < hexesTotal; i++)
+            {
+                HexScript hex = GameObject.Find("HexClone " + i).GetComponent<HexScript>();
+                hex.updateHex();
+            }
+            screeni();
+            return false;
+        }
+        
+    }
     public bool autoHex(int hexNum, int[] order)
     {
         times++;
         if (hexesTotal <= hexNum)
-            return true;
+            return variant();
 
         HexScript hex = GameObject.Find("HexClone " + hexNum).GetComponent<HexScript>();
         int[] hexOrder = (int[])order.Clone();
@@ -91,15 +109,15 @@ public class AutoScript : MonoBehaviour
         return false;
     }
 
-    public void screeni()
+    public IEnumerator screeni()
     {
-        UI.SetActive(false);
+
         int x = flopsList();
         if (varia == -1)
             ScreenCapture.CaptureScreenshot(System.IO.Path.Combine("autoSolves", x + ".png"));
         else
-            ScreenCapture.CaptureScreenshot(System.IO.Path.Combine("autoSolves", x + " " + (varia + 1) + ".png"));
-
+            ScreenCapture.CaptureScreenshot(System.IO.Path.Combine("autoSolves", x + " " + varia + ".png"));
+        yield return new WaitForSeconds(0.05f);
     }
 
     public int flopsList()
@@ -140,14 +158,14 @@ public class AutoScript : MonoBehaviour
                 return false;
         }
         ////
-        if (hexesTotal <= hexNum + 1)
+        /*if (hexesTotal <= hexNum + 1)
         {
             if (vari > 0)
             {
                 vari--;
                 return false;
             }
-        }
+        }*/
         return true;
     }
     public int[] nextMod(int[] hexOrder, int modLoc)
