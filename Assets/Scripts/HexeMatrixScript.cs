@@ -14,7 +14,6 @@ public class HexeMatrixScript : MonoBehaviour
     public ResetScript ResetScript;
     public int height;
     public int length;
-    public int very;
     public float hDiff;
     public float LDiffX;
     public float LDiffY;
@@ -40,12 +39,13 @@ public class HexeMatrixScript : MonoBehaviour
         //arrayToFlops(flopsToArray());
         if ((!PlayerPrefs.HasKey("auto")) || PlayerPrefs.GetInt("auto") == 1)
         {
-            AutoScript.starter(PlayerPrefs.GetInt("variations"));
+            AutoScript.starter();
 
             yield return new WaitForSeconds(0.05f);
             
         }
         //PlayerPrefs.DeleteKey("auto");
+<<<<<<< HEAD
         //variations();
         if (PlayerPrefs.GetInt("done") == 0 && PlayerPrefs.GetInt("variations") == 0)
             autoProject();
@@ -60,10 +60,14 @@ public class HexeMatrixScript : MonoBehaviour
         }
         UI.SetActive(true);
     }
+=======
+        int x = PlayerPrefs.GetInt("done");
+        if (PlayerPrefs.GetInt("done") == 0)
+            autoProject();
+    }
+>>>>>>> parent of eca6113 (added variations)
     public void autoProject()
     {
-        if (PlayerPrefs.GetInt("variMuch") == 1)
-            PlayerPrefs.SetInt("variations", 1);
         PlayerPrefs.SetInt("done", 0);
         bool[] a = flopsToArray();
 
@@ -183,7 +187,8 @@ public class HexeMatrixScript : MonoBehaviour
                     }
                 }
             }
-        }    
+        }
+                 
     }
     public int findLastUntilPoint(bool[] a)
     {

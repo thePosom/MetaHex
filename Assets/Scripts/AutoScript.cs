@@ -6,9 +6,6 @@ using UnityEngine.Profiling;
 public class AutoScript : MonoBehaviour
 {
     private int hexesTotal;
-    private int times;
-    private int vari;
-    private int varia;
     private int[] usedMods;
     private int[] allowedMods;
     public HexeMatrixScript HexeMatrixScript;
@@ -16,13 +13,16 @@ public class AutoScript : MonoBehaviour
     public SpriteRenderer wrongX;
     public GameObject UI;
 
-    public void starter(int i)
+    public void starter()
     {
+<<<<<<< HEAD
         //vari = i - 1;
         //varia = i - 1;
         vari = 0;
         varia = 0;
         times = 0;
+=======
+>>>>>>> parent of eca6113 (added variations)
         hexesTotal = HexeMatrixScript.height * HexeMatrixScript.length;
         usedMods = new int[8];
         allowedMods = setFlops();
@@ -35,11 +35,7 @@ public class AutoScript : MonoBehaviour
         int[] order = new int[6];
         order = nextMod(order, 0);
         if (!autoHex(0, order))
-        {
             wrongX.enabled = true;
-            PlayerPrefs.SetInt("variations", 0);
-        }
-
         else
         {
             for (int i = 0; i < hexesTotal; i++)
@@ -47,12 +43,11 @@ public class AutoScript : MonoBehaviour
                 HexScript hex = GameObject.Find("HexClone " + i).GetComponent<HexScript>();
                 hex.updateHex();
             }
-            
+            screeni();
         }
-        screeni();
-        Debug.Log(times);
     }
 
+<<<<<<< HEAD
     public bool variant()
     {
         if (vari == -1)
@@ -70,9 +65,26 @@ public class AutoScript : MonoBehaviour
         }
         
     }
+=======
+    public void screeni()
+    {
+        UI.SetActive(false);
+        int x = flopsList();
+        ScreenCapture.CaptureScreenshot(System.IO.Path.Combine("autoSolves", x + ".png"));
+        
+    }
+
+    public int flopsList()
+    {
+        int x = 0;
+        for (int i = 0; i < allowedMods.Length; i++)
+            x = x * 10 + allowedMods[i];
+        return x;
+    }
+
+>>>>>>> parent of eca6113 (added variations)
     public bool autoHex(int hexNum, int[] order)
     {
-        times++;
         if (hexesTotal <= hexNum)
             return variant();
 
@@ -83,10 +95,6 @@ public class AutoScript : MonoBehaviour
 
         for (int i = 0; i < 12 * allowedMods.Length; i++)
         {
-            i = skipper(i);
-            if (i >= 12 * allowedMods.Length)
-                break;
-
             if (i % 12 == 6)
                 reverse(hexOrder);
 
@@ -108,6 +116,7 @@ public class AutoScript : MonoBehaviour
         hex.setHexSides(linesCopy);
         return false;
     }
+<<<<<<< HEAD
 
     public IEnumerator screeni()
     {
@@ -147,9 +156,11 @@ public class AutoScript : MonoBehaviour
 
         return i;
     }
+=======
+>>>>>>> parent of eca6113 (added variations)
     public bool ratiod(int hexNum, int[] hexOrder)
     {
-        usedMods[idealHex.checkHex(hexOrder) - 1]++;
+        usedMods[idealHex.checkHex(hexOrder)-1]++;
         ////
         int thisNum = hexesTotal / allowedMods.Length;
         for (int i = 0; i < 8; i++)
@@ -158,6 +169,7 @@ public class AutoScript : MonoBehaviour
                 return false;
         }
         ////
+<<<<<<< HEAD
         /*if (hexesTotal <= hexNum + 1)
         {
             if (vari > 0)
@@ -166,6 +178,8 @@ public class AutoScript : MonoBehaviour
                 return false;
             }
         }*/
+=======
+>>>>>>> parent of eca6113 (added variations)
         return true;
     }
     public int[] nextMod(int[] hexOrder, int modLoc)
