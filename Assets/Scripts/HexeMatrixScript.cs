@@ -14,6 +14,7 @@ public class HexeMatrixScript : MonoBehaviour
     public ResetScript ResetScript;
     public int height;
     public int length;
+    public int very;
     public float hDiff;
     public float LDiffX;
     public float LDiffY;
@@ -31,51 +32,45 @@ public class HexeMatrixScript : MonoBehaviour
     private IEnumerator Start()
     {
         starterCoords();
-        spawner(height,length);
+        spawner(height, length);
         setFlops();
-        UI.SetActive(false);
         yield return new WaitForSeconds(0.05f);
 
         //arrayToFlops(flopsToArray());
         if ((!PlayerPrefs.HasKey("auto")) || PlayerPrefs.GetInt("auto") == 1)
         {
-            AutoScript.starter();
+            AutoScript.starter(PlayerPrefs.GetInt("variations"));
 
             yield return new WaitForSeconds(0.05f);
-            
+            UI.SetActive(true);
         }
         //PlayerPrefs.DeleteKey("auto");
-<<<<<<< HEAD
-        //variations();
+        variations();
         if (PlayerPrefs.GetInt("done") == 0 && PlayerPrefs.GetInt("variations") == 0)
             autoProject();
     }
     public void variations()
     {
         int x = PlayerPrefs.GetInt("variations");
-        if(x!=0)
+        UnityEngine.Debug.Log(x);
+        if (x != 0)
         {
-            PlayerPrefs.SetInt("variations", x+1);
+            PlayerPrefs.SetInt("variations", x + 1);
             ResetScript.reset(true);
         }
-        UI.SetActive(true);
     }
-=======
-        int x = PlayerPrefs.GetInt("done");
-        if (PlayerPrefs.GetInt("done") == 0)
-            autoProject();
-    }
->>>>>>> parent of eca6113 (added variations)
     public void autoProject()
     {
+        if (PlayerPrefs.GetInt("variMuch") == 1)
+            PlayerPrefs.SetInt("variations", 1);
         PlayerPrefs.SetInt("done", 0);
         bool[] a = flopsToArray();
 
         int x = findLastUntilPoint(a);
         a[x] = false;
-        if (x!=7)
+        if (x != 7)
         {
-            a[x+1] = true;
+            a[x + 1] = true;
             arrayToFlops(a);
             UnityEngine.Debug.Log(a[0] + ", " + a[1] + ", " + a[2] + ", " + a[3] + ", " + a[4] + ", " + a[5] + ", " + a[6] + ", " + a[7]);
             ResetScript.reset(true);
@@ -188,17 +183,16 @@ public class HexeMatrixScript : MonoBehaviour
                 }
             }
         }
-                 
     }
     public int findLastUntilPoint(bool[] a)
     {
-        int x=-1;
+        int x = -1;
         for (int i = 0; i < a.Length; i++)
         {
             if (a[i])
                 x = i;
         }
-        if(x!=-1)
+        if (x != -1)
             return x;
         PlayerPrefs.SetInt("done", 1);
         ResetScript.reset(true);
@@ -207,7 +201,7 @@ public class HexeMatrixScript : MonoBehaviour
     public bool[] flopsToArray()
     {
         bool[] x = new bool[8];
-        for(int i = 0; i < 8; i++)
+        for (int i = 0; i < 8; i++)
         {
             if ((bool)GetType().GetField(("floppy" + (i + 1)), BindingFlags.Public | BindingFlags.Instance)?.GetValue(this))
                 x[i] = true;
@@ -229,7 +223,7 @@ public class HexeMatrixScript : MonoBehaviour
         {
             if (n[i])
             {
-                FieldInfo field = GetType().GetField(("floppy" + (i+1)), BindingFlags.Public | BindingFlags.Instance);
+                FieldInfo field = GetType().GetField(("floppy" + (i + 1)), BindingFlags.Public | BindingFlags.Instance);
                 field?.SetValue(this, true);
             }
         }
@@ -271,7 +265,7 @@ public class HexeMatrixScript : MonoBehaviour
     public int flopsToNum()
     {
         int x = 0;
-        for(int i = 1; i <= 8; i++)
+        for (int i = 1; i <= 8; i++)
         {
             if ((bool)GetType().GetField(("floppy" + i), BindingFlags.Public | BindingFlags.Instance)?.GetValue(this))
                 x = x * 10 + i;
@@ -386,7 +380,7 @@ public class HexeMatrixScript : MonoBehaviour
             {
                 GameObject HexClone = Instantiate(Hexegon, transform.position + new Vector3(x, y, 0), transform.rotation);
                 HexClone.tag = "HexClone";
-                HexClone.name = "HexClone "+c;
+                HexClone.name = "HexClone " + c;
                 y += hDiff;
                 c++;
             }
@@ -400,6 +394,6 @@ public class HexeMatrixScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

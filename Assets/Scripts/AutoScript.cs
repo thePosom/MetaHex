@@ -6,25 +6,27 @@ using UnityEngine.Profiling;
 public class AutoScript : MonoBehaviour
 {
     private int hexesTotal;
+    private int times;
+    private int vari;
+    private int varia;
     private int[] usedMods;
     private int[] allowedMods;
+    //int[] ratio = { 1, 0, 0, 0, 1, 0, 0, 0 };
+    //int totalWeight;
     public HexeMatrixScript HexeMatrixScript;
     public ClicksScript idealHex;
     public SpriteRenderer wrongX;
     public GameObject UI;
 
-    public void starter()
+    public void starter(int i)
     {
-<<<<<<< HEAD
-        //vari = i - 1;
-        //varia = i - 1;
-        vari = 0;
-        varia = 0;
+        vari = i - 1;
+        varia = i - 1;
         times = 0;
-=======
->>>>>>> parent of eca6113 (added variations)
         hexesTotal = HexeMatrixScript.height * HexeMatrixScript.length;
         usedMods = new int[8];
+        //int[] ratio = new int[8];
+        //totalWeight = sum(ratio);
         allowedMods = setFlops();
 
         autoHex();
@@ -35,7 +37,11 @@ public class AutoScript : MonoBehaviour
         int[] order = new int[6];
         order = nextMod(order, 0);
         if (!autoHex(0, order))
+        {
             wrongX.enabled = true;
+            PlayerPrefs.SetInt("variations", 0);
+        }
+
         else
         {
             for (int i = 0; i < hexesTotal; i++)
@@ -43,50 +49,18 @@ public class AutoScript : MonoBehaviour
                 HexScript hex = GameObject.Find("HexClone " + i).GetComponent<HexScript>();
                 hex.updateHex();
             }
-            screeni();
+
         }
+        //screeni();
+        //Debug.Log(times);
     }
 
-<<<<<<< HEAD
-    public bool variant()
-    {
-        if (vari == -1)
-            return true;
-        else
-        {
-            varia++;
-            for (int i = 0; i < hexesTotal; i++)
-            {
-                HexScript hex = GameObject.Find("HexClone " + i).GetComponent<HexScript>();
-                hex.updateHex();
-            }
-            screeni();
-            return false;
-        }
-        
-    }
-=======
-    public void screeni()
-    {
-        UI.SetActive(false);
-        int x = flopsList();
-        ScreenCapture.CaptureScreenshot(System.IO.Path.Combine("autoSolves", x + ".png"));
-        
-    }
 
-    public int flopsList()
-    {
-        int x = 0;
-        for (int i = 0; i < allowedMods.Length; i++)
-            x = x * 10 + allowedMods[i];
-        return x;
-    }
-
->>>>>>> parent of eca6113 (added variations)
     public bool autoHex(int hexNum, int[] order)
     {
+        times++;
         if (hexesTotal <= hexNum)
-            return variant();
+            return true;
 
         HexScript hex = GameObject.Find("HexClone " + hexNum).GetComponent<HexScript>();
         int[] hexOrder = (int[])order.Clone();
@@ -95,6 +69,10 @@ public class AutoScript : MonoBehaviour
 
         for (int i = 0; i < 12 * allowedMods.Length; i++)
         {
+            i = skipper(i);
+            if (i >= 12 * allowedMods.Length)
+                break;
+
             if (i % 12 == 6)
                 reverse(hexOrder);
 
@@ -116,18 +94,6 @@ public class AutoScript : MonoBehaviour
         hex.setHexSides(linesCopy);
         return false;
     }
-<<<<<<< HEAD
-
-    public IEnumerator screeni()
-    {
-
-        int x = flopsList();
-        if (varia == -1)
-            ScreenCapture.CaptureScreenshot(System.IO.Path.Combine("autoSolves", x + ".png"));
-        else
-            ScreenCapture.CaptureScreenshot(System.IO.Path.Combine("autoSolves", x + " " + varia + ".png"));
-        yield return new WaitForSeconds(0.05f);
-    }
 
     public int flopsList()
     {
@@ -136,6 +102,16 @@ public class AutoScript : MonoBehaviour
             x = x * 10 + allowedMods[i];
         return x;
     }
+    public void screeni()
+    {
+        UI.SetActive(false);
+        int x = flopsList();
+        if (varia == -1)
+            ScreenCapture.CaptureScreenshot(System.IO.Path.Combine("autoSolves", x + ".png"));
+        else
+            ScreenCapture.CaptureScreenshot(System.IO.Path.Combine("autoSolves", x + " " + (varia + 1) + ".png"));
+
+    }
     public int skipper(int i)
     {
         int x = i % 12;
@@ -143,8 +119,6 @@ public class AutoScript : MonoBehaviour
 
         if (m == 2 || m == 3 || m == 4 || m == 7)
             return i;
-        if (x == 7)
-            return i + 4;
         if ((m == 1) && (x == 1 || x == 7))
             return i + 5;
         if (m == 5 && (x == 3 || x == 9))
@@ -156,30 +130,37 @@ public class AutoScript : MonoBehaviour
 
         return i;
     }
-=======
->>>>>>> parent of eca6113 (added variations)
     public bool ratiod(int hexNum, int[] hexOrder)
     {
-        usedMods[idealHex.checkHex(hexOrder)-1]++;
+        int mode = idealHex.checkHex(hexOrder);
+        usedMods[mode - 1]++;
         ////
         int thisNum = hexesTotal / allowedMods.Length;
-        for (int i = 0; i < 8; i++)
-        {
-            if (usedMods[i] > thisNum)
-                return false;
-        }
+        //int thisNum = (hexesTotal / totalWeight)*ratio[mode-1];
+        if(usedMods[mode - 1] > thisNum)
+            return false;
+
+
         ////
-<<<<<<< HEAD
-        /*if (hexesTotal <= hexNum + 1)
+        if (hexesTotal <= hexNum + 1)
         {
             if (vari > 0)
             {
                 vari--;
                 return false;
             }
-        }*/
-=======
->>>>>>> parent of eca6113 (added variations)
+        }
+        return true;
+    }
+    public bool samezies(int[] HexOrder, int[] lines)
+    {
+        for (int j = 0; j < 6; j++)
+        {
+            if (lines[j] == 1)
+                lines[j] = HexOrder[j];
+            if (lines[j] != HexOrder[j])
+                return false;
+        }
         return true;
     }
     public int[] nextMod(int[] hexOrder, int modLoc)
@@ -247,17 +228,6 @@ public class AutoScript : MonoBehaviour
             HexOrder[i] = HexOrder[i - 1];
         HexOrder[0] = a;
     }
-    public bool samezies(int[] HexOrder, int[] lines)
-    {
-        for (int j = 0; j < 6; j++)
-        {
-            if (lines[j] == 1)
-                lines[j] = HexOrder[j];
-            if (lines[j] != HexOrder[j])
-                return false;
-        }
-        return true;
-    }
     public int[] setFlops()
     {
         int[] a = new int[8];
@@ -282,5 +252,12 @@ public class AutoScript : MonoBehaviour
         for (int i = 0; i < x; i++)
             b[i] = a[i];
         return b;
+    }
+    public int sum(int[] a)
+    {
+        int s = 0;
+        for (int i = 0; i < a.Length; i++)
+            s += a[i];
+        return s;
     }
 }
