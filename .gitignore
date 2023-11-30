@@ -1,10 +1,12 @@
 /Builds/
 /.vscode/
-/AautoSolves/
+/.vs/
 /Assembly-CSharp-Editor.csproj
 /Assembly-CSharp.csproj
+/Builds/
 /Library/
 /Logs/
+/obj/
 /MetaHex.exe
 /MetaHex.sln
 /MetaHex_BurstDebugInformation_DoNotShip/

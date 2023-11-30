@@ -9,34 +9,33 @@ public class AutoScript : MonoBehaviour
     private int times;
     private int vari;
     private int varia;
+    public int totalVariationIsland = 0;
     private int[] usedMods;
     private int[] allowedMods;
-    //int[] ratio = { 1, 0, 0, 0, 1, 0, 0, 0 };
-    //int totalWeight;
     public HexeMatrixScript HexeMatrixScript;
     public ClicksScript idealHex;
     public SpriteRenderer wrongX;
-    public GameObject UI;
 
     public void starter(int i)
     {
-        vari = i - 1;
-        varia = i - 1;
-        times = 0;
         hexesTotal = HexeMatrixScript.height * HexeMatrixScript.length;
         usedMods = new int[8];
-        //int[] ratio = new int[8];
-        //totalWeight = sum(ratio);
         allowedMods = setFlops();
-
-        autoHex();
+        if (i == 0 || PlayerPrefs.GetInt("photo") == 1)
+        {
+            vari = i - 1;
+            varia = i - 1;
+            times = 0;
+            autoHex();
+        }
+        else
+            veryAutoHex();
     }
+
 
     public void autoHex()
     {
-        int[] order = new int[6];
-        order = nextMod(order, 0);
-        if (!autoHex(0, order))
+        if (!autoHex(0))
         {
             wrongX.enabled = true;
             PlayerPrefs.SetInt("variations", 0);
@@ -51,19 +50,30 @@ public class AutoScript : MonoBehaviour
             }
 
         }
+        if (PlayerPrefs.GetInt("photo") == 1)
+            screeni();
+    }
+    public void veryAutoHex()
+    {
+        if (!veryAutoHex(0))
+            PlayerPrefs.SetInt("variations", 0);
+        HexeMatrixScript.VeryTexty.text = totalVariationIsland.ToString();
+        //else
+        //{
+            
+        //}
         //screeni();
-        //Debug.Log(times);
     }
 
 
-    public bool autoHex(int hexNum, int[] order)
+    public bool autoHex(int hexNum)
     {
         times++;
         if (hexesTotal <= hexNum)
             return true;
 
         HexScript hex = GameObject.Find("HexClone " + hexNum).GetComponent<HexScript>();
-        int[] hexOrder = (int[])order.Clone();
+        int[] hexOrder = new int[6];
         int[] lines = { hex.bs, hex.bls, hex.tls, hex.ts, hex.trs, hex.brs };
         int[] linesCopy = (int[])lines.Clone();
 
@@ -83,7 +93,49 @@ public class AutoScript : MonoBehaviour
             if (samezies(hexOrder, lines))
             {
                 hex.setHexSides(lines);
-                if (ratiod(hexNum, hexOrder) && autoHex(hexNum + 1, lines))
+                if (ratiod(hexNum, hexOrder) && autoHex(hexNum + 1))
+                    return true;
+                hex.setHexSides(linesCopy);
+                usedMods[idealHex.checkHex(hexOrder) - 1]--;
+            }
+            lines = (int[])linesCopy.Clone();
+            slider(hexOrder);
+        }
+        hex.setHexSides(linesCopy);
+        return false;
+    }
+
+    public bool veryAutoHex(int hexNum)
+    {
+        times++;
+        if (hexesTotal <= hexNum)
+        {
+            totalVariationIsland++;
+            return false;
+        } 
+
+        HexScript hex = GameObject.Find("HexClone " + hexNum).GetComponent<HexScript>();
+        int[] hexOrder = new int[6];
+        int[] lines = { hex.bs, hex.bls, hex.tls, hex.ts, hex.trs, hex.brs };
+        int[] linesCopy = (int[])lines.Clone();
+
+        for (int i = 0; i < 12 * allowedMods.Length; i++)
+        {
+            i = skipper(i);
+            if (i >= 12 * allowedMods.Length)
+                break;
+
+            if (i % 12 == 6)
+                reverse(hexOrder);
+
+            if (i % 12 == 0)
+                hexOrder = nextMod(hexOrder, i / 12);
+
+
+            if (samezies(hexOrder, lines))
+            {
+                hex.setHexSides(lines);
+                if (ratiod(hexNum, hexOrder) && veryAutoHex(hexNum + 1))
                     return true;
                 hex.setHexSides(linesCopy);
                 usedMods[idealHex.checkHex(hexOrder) - 1]--;
@@ -104,7 +156,6 @@ public class AutoScript : MonoBehaviour
     }
     public void screeni()
     {
-        UI.SetActive(false);
         int x = flopsList();
         if (varia == -1)
             ScreenCapture.CaptureScreenshot(System.IO.Path.Combine("autoSolves", x + ".png"));
@@ -134,14 +185,10 @@ public class AutoScript : MonoBehaviour
     {
         int mode = idealHex.checkHex(hexOrder);
         usedMods[mode - 1]++;
-        ////
         int thisNum = hexesTotal / allowedMods.Length;
-        //int thisNum = (hexesTotal / totalWeight)*ratio[mode-1];
         if(usedMods[mode - 1] > thisNum)
             return false;
-
-
-        ////
+        //להוריד כנראה
         if (hexesTotal <= hexNum + 1)
         {
             if (vari > 0)

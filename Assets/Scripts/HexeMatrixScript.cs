@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 using System.Reflection;
+using TMPro;
 
 public class HexeMatrixScript : MonoBehaviour
 {
     public GameObject Hexegon;
     public GameObject first;
     public GameObject firstText;
-    public GameObject UI;
+    public TextMeshProUGUI VeryTexty;
+    //public GameObject UI;
     public AutoScript AutoScript;
     public ResetScript ResetScript;
     public int height;
@@ -36,25 +38,40 @@ public class HexeMatrixScript : MonoBehaviour
         setFlops();
         yield return new WaitForSeconds(0.05f);
 
-        //arrayToFlops(flopsToArray());
         if ((!PlayerPrefs.HasKey("auto")) || PlayerPrefs.GetInt("auto") == 1)
-        {
             AutoScript.starter(PlayerPrefs.GetInt("variations"));
-
-            yield return new WaitForSeconds(0.05f);
-            UI.SetActive(true);
+        variations();
+        if (PlayerPrefs.GetInt("variations") == 0)
+        {
+            if (PlayerPrefs.GetInt("maxVar") != 0)
+            {
+                VeryTexty.text = PlayerPrefs.GetInt("maxVar").ToString();
+                PlayerPrefs.SetInt("maxVar", 0);
+            }
+            if(PlayerPrefs.GetInt("done") == 0)
+                autoProject();
+            else
+                UnityEngine.Debug.Log(PlayerPrefs.GetInt("maxVar"));
         }
-        //PlayerPrefs.DeleteKey("auto");
+            
+    }
+
+    public void auto()
+    {
+        PlayerPrefs.SetInt("auto", 1);
+        AutoScript.starter(PlayerPrefs.GetInt("variations"));
         variations();
         if (PlayerPrefs.GetInt("done") == 0 && PlayerPrefs.GetInt("variations") == 0)
             autoProject();
+        PlayerPrefs.SetInt("auto", 0);
     }
     public void variations()
     {
         int x = PlayerPrefs.GetInt("variations");
         UnityEngine.Debug.Log(x);
-        if (x != 0)
+        if (x != 0 && PlayerPrefs.GetInt("photo") == 1)
         {
+            PlayerPrefs.SetInt("maxVar", x);
             PlayerPrefs.SetInt("variations", x + 1);
             ResetScript.reset(true);
         }
@@ -121,12 +138,12 @@ public class HexeMatrixScript : MonoBehaviour
                         if (q != 3)
                         {
                             a[q + 1] = true;
-                            a[q + 2] = true;
                             a[q + 3] = true;
+                            a[q + 2] = true;
                             a[q + 4] = true;
                             a[q + 5] = true;
                             arrayToFlops(a);
-                            UnityEngine.Debug.Log(a[0] + ", " + a[1] + ", " + a[2] + ", " + a[3] + ", " + a[4] + ", " + a[5] + ", " + a[6] + ", " + a[7]);
+                            UnityEngine.Debug.Log(a[0] + ", " + a[1] + " " + a[2] + ", " + a[3] + ", " + a[4] + ", " + a[5] + ", " + a[6] + ", " + a[7]);
                             ResetScript.reset(true);
                         }
                         else

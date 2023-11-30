@@ -107,6 +107,11 @@ public class HexScript : MonoBehaviour
         int h = HexeMatrixScript.height;
         int l = HexeMatrixScript.length;
 
+        if (PlayerPrefs.HasKey("periodic") && PlayerPrefs.GetInt("periodic") == 0)
+        {
+            partSideHexes();
+            return;
+        }
         if ((hexNum % h) != 0)
             BottomHex = GameObject.Find("HexClone " + (hexNum - 1)).GetComponent<HexScript>();
         else
@@ -147,15 +152,38 @@ public class HexScript : MonoBehaviour
             }
         }
 
-        if (((hexNum+1) % h) != 0)
+        if (((hexNum + 1) % h) != 0)
             TopHex = GameObject.Find("HexClone " + (hexNum + 1)).GetComponent<HexScript>();
         else
             TopHex = GameObject.Find("HexClone " + (hexNum - h + 1)).GetComponent<HexScript>();
 
-        if ((hexNum + h) < h*l)
+        if ((hexNum + h) < h * l)
             TopRightHex = GameObject.Find("HexClone " + (hexNum + h)).GetComponent<HexScript>();
         else
             TopRightHex = GameObject.Find("HexClone " + (hexNum - h * l + h)).GetComponent<HexScript>();
+    }
+    public void partSideHexes()
+    {
+        int h = HexeMatrixScript.height;
+        int l = HexeMatrixScript.length;
+
+        if ((hexNum % h) != 0)
+            BottomHex = GameObject.Find("HexClone " + (hexNum - 1)).GetComponent<HexScript>();
+
+        if ((hexNum - h) >= 0)
+            BottomLeftHex = GameObject.Find("HexClone " + (hexNum - h)).GetComponent<HexScript>();
+
+        if ((hexNum + h) < h * l && hexNum % h != 0)
+            BottomRightHex = GameObject.Find("HexClone " + (hexNum + h - 1)).GetComponent<HexScript>();
+
+        if ((hexNum - h) >= 0 && (hexNum + 1) % h != 0)
+            TopLeftHex = GameObject.Find("HexClone " + (hexNum - h + 1)).GetComponent<HexScript>();
+
+        if (((hexNum + 1) % h) != 0)
+            TopHex = GameObject.Find("HexClone " + (hexNum + 1)).GetComponent<HexScript>();
+
+        if ((hexNum + h) < h * l)
+            TopRightHex = GameObject.Find("HexClone " + (hexNum + h)).GetComponent<HexScript>();
     }
     public int stringToInt(string a)
     {
@@ -192,26 +220,26 @@ public class HexScript : MonoBehaviour
     public void setBottom(int x, bool first)
     {
         bs = x;
-        if (first)
+        if (first && BottomHex != null)
         {
-            if (x == 0) 
+            if (x == 0)
                 BottomHex.setTop(2, false);
-            if (x == 1) 
+            if (x == 1)
                 BottomHex.setTop(1, false);
             if (x == 2)
                 BottomHex.setTop(0, false);
         }
-        if(x==0)
+        if (x == 0)
             this.transform.Find("LineBottom").transform.Find("PressIn").GetComponent<ButtonPressIn>().Clicked();
-        if(x==1)
+        if (x == 1)
             this.transform.Find("LineBottom").transform.Find("PressNormal").GetComponent<ButtonPressNormal>().Clicked();
-        if(x==2)
+        if (x == 2)
             this.transform.Find("LineBottom").transform.Find("PressOut").GetComponent<ButtonPressOut>().Clicked();
     }
     public void setBottomLeft(int x, bool first)
     {
         bls = x;
-        if (first)
+        if (first && BottomLeftHex != null)
         {
             if (x == 0)
                 BottomLeftHex.setTopRight(2, false);
@@ -230,7 +258,7 @@ public class HexScript : MonoBehaviour
     public void setTopLeft(int x, bool first)
     {
         tls = x;
-        if (first)
+        if (first && TopLeftHex != null)
         {
             if (x == 0)
                 TopLeftHex.setBottomRight(2, false);
@@ -249,7 +277,7 @@ public class HexScript : MonoBehaviour
     public void setTop(int x, bool first)
     {
         ts = x;
-        if (first)
+        if (first && TopHex != null)
         {
             if (x == 0)
                 TopHex.setBottom(2, false);
@@ -269,7 +297,7 @@ public class HexScript : MonoBehaviour
     public void setTopRight(int x, bool first)
     {
         trs = x;
-        if (first)
+        if (first && TopRightHex != null)
         {
             if (x == 0)
                 TopRightHex.setBottomLeft(2, false);
@@ -288,7 +316,7 @@ public class HexScript : MonoBehaviour
     public void setBottomRight(int x, bool first)
     {
         brs = x;
-        if (first)
+        if (first && BottomRightHex != null)
         {
             if (x == 0)
                 BottomRightHex.setTopLeft(2, false);
@@ -307,11 +335,11 @@ public class HexScript : MonoBehaviour
     public void setBottomA(int x, bool first)
     {
         bs = x;
-        if (first)
+        if (first && BottomHex != null)
         {
-            if (x == 0) 
+            if (x == 0)
                 BottomHex.setTopA(2, false);
-            if (x == 1) 
+            if (x == 1)
                 BottomHex.setTopA(1, false);
             if (x == 2)
                 BottomHex.setTopA(0, false);
@@ -320,7 +348,7 @@ public class HexScript : MonoBehaviour
     public void setBottomLeftA(int x, bool first)
     {
         bls = x;
-        if (first)
+        if (first && BottomLeftHex != null)
         {
             if (x == 0)
                 BottomLeftHex.setTopRightA(2, false);
@@ -333,7 +361,7 @@ public class HexScript : MonoBehaviour
     public void setTopLeftA(int x, bool first)
     {
         tls = x;
-        if (first)
+        if (first && TopLeftHex != null)
         {
             if (x == 0)
                 TopLeftHex.setBottomRightA(2, false);
@@ -346,7 +374,7 @@ public class HexScript : MonoBehaviour
     public void setTopA(int x, bool first)
     {
         ts = x;
-        if (first)
+        if (first && TopHex != null)
         {
             if (x == 0)
                 TopHex.setBottomA(2, false);
@@ -360,7 +388,7 @@ public class HexScript : MonoBehaviour
     public void setTopRightA(int x, bool first)
     {
         trs = x;
-        if (first)
+        if (first && TopRightHex != null)
         {
             if (x == 0)
                 TopRightHex.setBottomLeftA(2, false);
@@ -373,7 +401,7 @@ public class HexScript : MonoBehaviour
     public void setBottomRightA(int x, bool first)
     {
         brs = x;
-        if (first)
+        if (first && BottomRightHex != null)
         {
             if (x == 0)
                 BottomRightHex.setTopLeftA(2, false);

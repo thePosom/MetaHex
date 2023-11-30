@@ -20,6 +20,8 @@ public class SendSizeScript : MonoBehaviour
     public Toggle auto;
     public Toggle moreAuto;
     public Toggle very;
+    public Toggle pery;
+    public Toggle photo;
     public int flon1 = 0;
     public int flon2 = 0;
     public int flon3 = 0;
@@ -30,6 +32,8 @@ public class SendSizeScript : MonoBehaviour
     public int flon8 = 0;
     public int automo = 0;
     public int vari = 0;
+    public int peri = 0;
+    public int foto = 0;
     public int moreAutomo = 1;
 
     void Start()
@@ -62,6 +66,10 @@ public class SendSizeScript : MonoBehaviour
             moreAutomo = 0;
         if (very.isOn)
             vari = 1;
+        if (pery.isOn)
+            peri = 1;
+        if (photo.isOn)
+            foto = 1;
         return flon1 == 1 || flon2 == 1 || flon3 == 1 || flon4 == 1 || flon5 == 1 || flon6 == 1 || flon7 == 1 || flon8 == 1;
     }
 
@@ -87,6 +95,8 @@ public class SendSizeScript : MonoBehaviour
             PlayerPrefs.SetInt("done", moreAutomo);
             PlayerPrefs.SetInt("variations", vari);
             PlayerPrefs.SetInt("variMuch", vari);
+            PlayerPrefs.SetInt("periodic", peri);
+            PlayerPrefs.SetInt("photo", foto);
             SceneManager.LoadScene(1);
         }
     }
