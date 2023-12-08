@@ -9,7 +9,7 @@ public class AutoScript : MonoBehaviour
     private int times;
     private int vari;
     private int varia;
-    public int totalVariationIsland = 0;
+    public long totalVariationIsland = 0;
     private int[] usedMods;
     private int[] allowedMods;
     public HexeMatrixScript HexeMatrixScript;
@@ -30,6 +30,13 @@ public class AutoScript : MonoBehaviour
         }
         else
             veryAutoHex();
+    }
+    public void veryStarter()
+    {
+        hexesTotal = HexeMatrixScript.height * HexeMatrixScript.length;
+        usedMods = new int[8];
+        allowedMods = setFlops();
+        veryAutoHex();
     }
 
 
@@ -58,11 +65,6 @@ public class AutoScript : MonoBehaviour
         if (!veryAutoHex(0))
             PlayerPrefs.SetInt("variations", 0);
         HexeMatrixScript.VeryTexty.text = totalVariationIsland.ToString();
-        //else
-        //{
-            
-        //}
-        //screeni();
     }
 
 
