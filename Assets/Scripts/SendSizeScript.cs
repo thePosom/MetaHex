@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class SendSizeScript : MonoBehaviour
 {
+    public TMP_InputField heightField;
+    public TMP_InputField lengthField;
     public TextMeshProUGUI height;
     public TextMeshProUGUI length;
     public Toggle flop1;
@@ -39,7 +41,38 @@ public class SendSizeScript : MonoBehaviour
     void Start()
     {
         Screen.fullScreen = false;
-        //Screen.fullScreenMode = FullScreenMode.MaximizedWindow;
+
+        if (PlayerPrefs.HasKey("height"))
+            heightField.text = PlayerPrefs.GetInt("height")+"";
+        if (PlayerPrefs.HasKey("length"))
+            lengthField.text = PlayerPrefs.GetInt("length")+"";
+        if (PlayerPrefs.HasKey("floppy1"))
+            flop1.isOn = PlayerPrefs.GetInt("floppy1") == 1;
+        if (PlayerPrefs.HasKey("floppy2"))
+            flop2.isOn = PlayerPrefs.GetInt("floppy2") == 1;
+        if (PlayerPrefs.HasKey("floppy3"))
+            flop3.isOn = PlayerPrefs.GetInt("floppy3") == 1;
+        if (PlayerPrefs.HasKey("floppy4"))
+            flop4.isOn = PlayerPrefs.GetInt("floppy4") == 1;
+        if (PlayerPrefs.HasKey("floppy5"))
+            flop5.isOn = PlayerPrefs.GetInt("floppy5") == 1;
+        if (PlayerPrefs.HasKey("floppy6"))
+            flop6.isOn = PlayerPrefs.GetInt("floppy6") == 1;
+        if (PlayerPrefs.HasKey("floppy7"))
+            flop7.isOn = PlayerPrefs.GetInt("floppy7") == 1;
+        if (PlayerPrefs.HasKey("floppy8"))
+            flop8.isOn = PlayerPrefs.GetInt("floppy8") == 1;
+        if (PlayerPrefs.HasKey("auto"))
+            auto.isOn = PlayerPrefs.GetInt("auto") == 1;
+        if (PlayerPrefs.HasKey("done"))
+            moreAuto.isOn = PlayerPrefs.GetInt("done") != 1;
+        if (PlayerPrefs.HasKey("variMuch"))
+            very.isOn = PlayerPrefs.GetInt("variMuch") == 1;
+        if (PlayerPrefs.HasKey("periodic"))
+            pery.isOn = PlayerPrefs.GetInt("periodic") == 1;
+        if (PlayerPrefs.HasKey("photo"))
+            photo.isOn = PlayerPrefs.GetInt("photo") == 1;
+
     }
 
     private bool setFlons()
@@ -99,5 +132,10 @@ public class SendSizeScript : MonoBehaviour
             PlayerPrefs.SetInt("photo", foto);
             SceneManager.LoadScene(1);
         }
+    }
+
+    void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }
