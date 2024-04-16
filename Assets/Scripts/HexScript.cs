@@ -24,13 +24,19 @@ public class HexScript : MonoBehaviour
     public int ts = 1;
     public int trs = 1;
     public int brs = 1;
+    public int xPos; 
+    public int yPos; 
+
     // Start is called before the first frame update
     void Start()
     {
         hexNum = stringToInt(this.name);
         idealHex = GameObject.FindWithTag("Logic").GetComponent<ClicksScript>();
         HexeMatrixScript = GameObject.FindWithTag("HexeMatrix").GetComponent<HexeMatrixScript>();
-        sideHexs();
+        if (PlayerPrefs.HasKey("height"))
+            sideHexs();
+        else
+            sideHexser();
     }
 
     // Update is called once per frame
@@ -101,6 +107,54 @@ public class HexScript : MonoBehaviour
             hexText.text = hexType.ToString();
         else
             hexText.text = " ";
+    }
+
+    public void sideHexser()
+    {
+        int l = HexeMatrixScript.length;
+
+        if (PlayerPrefs.HasKey("periodic") && PlayerPrefs.GetInt("periodic") == 1)
+        {
+            return;
+        }
+
+        if (xPos != 0 && yPos != 0)
+        {
+            if (xPos < l)
+                BottomLeftHex = GameObject.Find("HexClone " + (hexNum - l - xPos)).GetComponent<HexScript>();
+            else 
+                BottomLeftHex = GameObject.Find("HexClone " + (hexNum - 3*l + xPos + 1)).GetComponent<HexScript>(); 
+        }
+
+        if (xPos != 2*l - 2 && yPos != 2*l - 2)
+        {
+            if (xPos < l - 1)
+                TopRightHex = GameObject.Find("HexClone " + (hexNum + l + xPos + 1)).GetComponent<HexScript>(); 
+            else
+                TopRightHex = GameObject.Find("HexClone " + (hexNum + 3*l - xPos - 2)).GetComponent<HexScript>(); 
+        }
+
+        if (xPos != 0 && yPos - xPos != l - 1)
+        {
+            if (xPos < l)
+                TopLeftHex = GameObject.Find("HexClone " + (hexNum - l - xPos + 1)).GetComponent<HexScript>(); 
+            else
+                TopLeftHex = GameObject.Find("HexClone " + (hexNum - 3*l + xPos + 2)).GetComponent<HexScript>(); 
+        }
+
+        if (xPos != 2*l - 2 && yPos + l - xPos != 1) 
+        {
+            if (xPos < l - 1)
+                BottomRightHex = GameObject.Find("HexClone " + (hexNum + l + xPos)).GetComponent<HexScript>();
+            else
+                BottomRightHex = GameObject.Find("HexClone " + (hexNum + 3*l - xPos - 3)).GetComponent<HexScript>();
+        }
+
+        if (yPos != 0 && yPos + l - xPos != 1)
+            BottomHex = GameObject.Find("HexClone " + (hexNum - 1)).GetComponent<HexScript>();
+
+        if (yPos != 2*l - 2 && yPos - xPos != l - 1)
+            TopHex = GameObject.Find("HexClone " + (hexNum + 1)).GetComponent<HexScript>();
     }
     public void sideHexs()
     {

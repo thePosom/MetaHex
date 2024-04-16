@@ -34,7 +34,10 @@ public class HexeMatrixScript : MonoBehaviour
     private IEnumerator Start()
     {
         starterCoords();
-        spawner(height, length);
+        if (PlayerPrefs.HasKey("height"))
+            spawner(height, length);
+        else
+            spawner(length);
         setFlops();
         yield return new WaitForSeconds(0.05f);
 
@@ -372,13 +375,17 @@ public class HexeMatrixScript : MonoBehaviour
         {
             height = PlayerPrefs.GetInt("height");
             length = PlayerPrefs.GetInt("length");
-            //PlayerPrefs.DeleteKey("height");
-            //PlayerPrefs.DeleteKey("length");
+            x = 0 - ((float)(length - 1) * LDiffX / 2);
+            y = 0 - ((float)(height - 1) * (hDiff + LDiffY)) / 2;
+            this.transform.position = new Vector3(x, y, 0);
         }
-        x = 0 - ((float)(length - 1) * LDiffX / 2);
-        y = 0 - ((float)(height - 1) * (hDiff + LDiffY)) / 2;
-        this.transform.position = new Vector3(x, y, 0);
-        firstText.transform.position = new Vector3(x, y, 0);
+        else 
+        {
+            length = PlayerPrefs.GetInt("length");
+            x = 0 - ((float)(length - 1) * LDiffX / 2);
+            y = 0 - ((float)(length - 1) * (hDiff + LDiffY)) / 2;
+            this.transform.position = new Vector3(x, y, 0);
+        }
     }
     private void spawner(int height, int length)
     {
@@ -405,7 +412,51 @@ public class HexeMatrixScript : MonoBehaviour
             preY += LDiffY;
             y = preY;
             x += LDiffX;
+        }
+    }
 
+    private void spawner(int length)
+    {
+        float y = 0;
+        float x = 0;
+        int c = 0;
+        float preY = 0;
+
+        for (int l = 0; l < length; l++) 
+        {
+            for (int h = 0; h < length + l; h++) {
+                GameObject HexClone = Instantiate(Hexegon, transform.position + new Vector3(x, y, 0), transform.rotation);
+                HexClone.tag = "HexClone";
+                HexClone.name = "HexClone " + c;
+                HexClone.GetComponent<HexScript>().xPos = l;
+                HexClone.GetComponent<HexScript>().yPos = h;
+                if (h==0&&l==0)
+                    first = HexClone;
+                y += hDiff;
+                c++;
+            }
+            preY -= LDiffY;
+            y = preY;
+            x += LDiffX;
+        }
+
+        preY += LDiffY*2;
+        y = preY;
+    
+        for (int l = 0; l < length-1; l++) 
+        {
+            for (int h = 0; h < 2*length - l - 2; h++) {
+                GameObject HexClone = Instantiate(Hexegon, transform.position + new Vector3(x, y, 0), transform.rotation);
+                HexClone.tag = "HexClone";
+                HexClone.name = "HexClone " + c;
+                HexClone.GetComponent<HexScript>().xPos = l+length;
+                HexClone.GetComponent<HexScript>().yPos = h + l + 1;
+                y += hDiff;
+                c++;
+            }
+            preY += LDiffY;
+            y = preY;
+            x += LDiffX;
         }
     }
     // Update is called once per frame

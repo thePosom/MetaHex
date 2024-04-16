@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,10 @@ public class AutoScript : MonoBehaviour
 
     public void starter(int i)
     {
-        hexesTotal = HexeMatrixScript.height * HexeMatrixScript.length;
+        if (PlayerPrefs.HasKey("height"))
+            hexesTotal = HexeMatrixScript.height * HexeMatrixScript.length;
+        else
+            hexesTotal = 3*(int)Math.Pow(HexeMatrixScript.length, 2) - 3*HexeMatrixScript.length + 1;
         usedMods = new int[8];
         allowedMods = setFlops();
         if (i == 0 || PlayerPrefs.GetInt("photo") == 1)
@@ -33,7 +37,10 @@ public class AutoScript : MonoBehaviour
     }
     public void veryStarter()
     {
-        hexesTotal = HexeMatrixScript.height * HexeMatrixScript.length;
+        if (PlayerPrefs.HasKey("height"))
+            hexesTotal = HexeMatrixScript.height * HexeMatrixScript.length;
+        else
+            hexesTotal = 3*HexeMatrixScript.length^2 - 3*HexeMatrixScript.length + 1;
         usedMods = new int[8];
         allowedMods = setFlops();
         veryAutoHex();
@@ -70,6 +77,7 @@ public class AutoScript : MonoBehaviour
 
     public bool autoHex(int hexNum)
     {
+        Debug.Log("num: "+hexNum);
         times++;
         if (hexesTotal <= hexNum)
             return true;
@@ -190,7 +198,7 @@ public class AutoScript : MonoBehaviour
         int thisNum = hexesTotal / allowedMods.Length;
         if(usedMods[mode - 1] > thisNum)
             return false;
-        //ìäåøéã ëðøàä
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
         if (hexesTotal <= hexNum + 1)
         {
             if (vari > 0)
