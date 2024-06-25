@@ -10,7 +10,9 @@ public class ResetScript : MonoBehaviour
     {
         if(remake)
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        else
+        else if (PlayerPrefs.HasKey("height"))
             SceneManager.LoadScene(0);
+        else
+            SceneManager.LoadScene(2);
     }
 }

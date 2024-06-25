@@ -43,19 +43,36 @@ public class HexScript : MonoBehaviour
     void Update()
     {
         if (hexType != -1)
-            hexText.text = hexType.ToString();
+            hexText.text = oldToNewNum(hexType);
         else
             hexText.text = " ";
         if (hexType != -1 && !HexeMatrixScript.checkHex(hexType))
-        {
             xHex.enabled = true;
-
-        }
         else
-        {
             xHex.enabled = false;
-        }
+        
         hexType = idealHex.checkHex(bs, bls, tls, ts, trs, brs);
+    }
+
+    public string oldToNewNum (int hexType) {
+        if (hexType==1)
+            return "1";
+        if (hexType==2)
+            return "4";
+        if (hexType==3)
+            return "5a";
+        if (hexType==4)
+            return "5b";
+        if (hexType==5)
+            return "2";
+        if (hexType==6)
+            return "3a";
+        if (hexType==7)
+            return "6";
+        if (hexType==8)
+            return "3b";
+        return " ";
+        
     }
 
     public void updateHex()
@@ -104,7 +121,7 @@ public class HexScript : MonoBehaviour
 
         hexType = idealHex.checkHex(bs, bls, tls, ts, trs, brs);
         if (hexType != -1)
-            hexText.text = hexType.ToString();
+            hexText.text = oldToNewNum(hexType);
         else
             hexText.text = " ";
     }
