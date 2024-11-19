@@ -2855,6 +2855,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &58498580
 GameObject:
   m_ObjectHideFlags: 0
@@ -7575,6 +7577,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &174857277
 GameObject:
   m_ObjectHideFlags: 0
@@ -7800,6 +7804,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &198709990
 GameObject:
   m_ObjectHideFlags: 0
@@ -8355,6 +8361,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &215704375
 GameObject:
   m_ObjectHideFlags: 0
@@ -9371,6 +9379,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &238720422
 GameObject:
   m_ObjectHideFlags: 0
@@ -10338,6 +10348,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &262395443
 GameObject:
   m_ObjectHideFlags: 0
@@ -13387,6 +13399,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &328954134
 GameObject:
   m_ObjectHideFlags: 0
@@ -21094,6 +21108,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &530649022
 GameObject:
   m_ObjectHideFlags: 0
@@ -23414,6 +23430,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &585357380
 GameObject:
   m_ObjectHideFlags: 0
@@ -24186,6 +24204,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &599653445
 GameObject:
   m_ObjectHideFlags: 0
@@ -27615,6 +27635,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &671003313
 GameObject:
   m_ObjectHideFlags: 0
@@ -30772,6 +30794,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &747353073
 GameObject:
   m_ObjectHideFlags: 0
@@ -33113,6 +33137,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &784931657
 GameObject:
   m_ObjectHideFlags: 0
@@ -36862,6 +36888,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &860068259
 GameObject:
   m_ObjectHideFlags: 0
@@ -37016,6 +37044,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &862787831
 GameObject:
   m_ObjectHideFlags: 0
@@ -37987,6 +38017,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &875301373
 GameObject:
   m_ObjectHideFlags: 0
@@ -46394,6 +46426,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &1080583404
 GameObject:
   m_ObjectHideFlags: 0
@@ -48310,6 +48344,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &1117557224
 GameObject:
   m_ObjectHideFlags: 0
@@ -51080,6 +51116,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &1176567019
 GameObject:
   m_ObjectHideFlags: 0
@@ -57257,6 +57295,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &1304136492
 GameObject:
   m_ObjectHideFlags: 0
@@ -63089,6 +63129,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &1427764497
 GameObject:
   m_ObjectHideFlags: 0
@@ -65480,8 +65522,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -65618,6 +65660,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &1494041308
 GameObject:
   m_ObjectHideFlags: 0
@@ -69206,6 +69250,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &1601558651
 GameObject:
   m_ObjectHideFlags: 0
@@ -70928,6 +70974,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &1641347234
 GameObject:
   m_ObjectHideFlags: 0
@@ -73168,6 +73216,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &1692317382
 GameObject:
   m_ObjectHideFlags: 0
@@ -76625,6 +76675,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &1755720132
 GameObject:
   m_ObjectHideFlags: 0
@@ -76993,8 +77045,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -77083,7 +77135,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78155,6 +78207,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &1789753789
 GameObject:
   m_ObjectHideFlags: 0
@@ -80573,6 +80627,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &1839671811
 GameObject:
   m_ObjectHideFlags: 0
@@ -82068,6 +82124,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &1864007074
 GameObject:
   m_ObjectHideFlags: 0
@@ -85360,6 +85418,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &1943784898
 GameObject:
   m_ObjectHideFlags: 0
@@ -87815,6 +87875,8 @@ MonoBehaviour:
   ts: 1
   trs: 1
   brs: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &2001765793
 GameObject:
   m_ObjectHideFlags: 0

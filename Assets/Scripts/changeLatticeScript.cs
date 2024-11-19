@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 public class changeLatticeScript : MonoBehaviour
 {
     public void toSquareLattice() {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
     }
 
     public void toHexLattice() {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(0);
     }
 }

@@ -69,6 +69,7 @@ public class AutoScript : MonoBehaviour
     }
     public void veryAutoHex()
     {
+        totalVariationIsland = 0;
         if (!veryAutoHex(0))
             PlayerPrefs.SetInt("variations", 0);
         HexeMatrixScript.VeryTexty.text = totalVariationIsland.ToString();
