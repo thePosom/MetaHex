@@ -5,7 +5,6 @@
 
 Let’s try to cover the plane with hexagonal tiles, arranged in the pattern you expect, except that these tiles are not rigid: each side is capable of moving both into the tile or out of it. In each tile, what one side does will determine the motion of all the other sides, too. In particular, if one side reverses its motion then so do all the others. It turns out that the deformations of the sides can be correlated in eight distinct patterns:
 
-![אני רעב קצת](https://github.com/user-attachments/assets/2a3ad6ca-95da-4cd7-bc6d-4f0659facc06)
 
 
 We pick one of these eight `block types’ and place a copy of it in each cell of the honeycomb lattice, where they can also be arbitrarily rotated, independently of each other, and each block can deform in the way shown here or with flipping the direction of motion of all of its sides. The goal is to find arrangements in which a simultaneous motion of all sides of all tiles is possible. This app helps you with this task. 
