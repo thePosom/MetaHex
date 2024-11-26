@@ -49,8 +49,12 @@ Lattice Screen:
 ●	Variations: Will try to find all of the variations that are using the settings from the selection screen and are using your current changed beams.
 
 
+<br/><br/>
 
+**Links:**
 
+●	[here is a website were it runs](https://theposom.itch.io/metahex)
 
+●	[here are all of the files](https://mega.nz/file/sDFxBBJC#dhCrq0IqhnLGDqhXj_oTH5hxv-mr_xKHUwicla5TWi4) (not up to date)
 
-[here are all of the files](https://mega.nz/file/sDFxBBJC#dhCrq0IqhnLGDqhXj_oTH5hxv-mr_xKHUwicla5TWi4)
+●	For more details, read this scientific paper which uses this program: Chaviva Sirote-Katz, Ofri Palti, Naomi Spiro, Tamás Kálmán, and Yair Shokef, “Breaking mechanical holography in combinatorial metamaterials,” arXiv:2411.15760 (2024) -  https://arxiv.org/abs/2411.15760
