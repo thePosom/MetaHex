@@ -40,9 +40,9 @@ Lattice Screen:
     
   Selection Screen:
 
-●	Photo Mode Button: Only works when the auto-solve button is on. When a solution is found automatically, it will save it as a picture to a folder named "autoSolves" which is in the folder named "MetaHex_Data". With buttons the variations and the more auto buttons, it will save all of the found solutions. Notes: doesn't work on the web version, if left to run on a big lattice for a long time it will fill up your PC. 
+●	Photo Mode: Only works when the auto-solve button is on. When a solution is found automatically, it will save it as a picture to a folder named "autoSolves" which is in the folder named "MetaHex_Data". With buttons the variations and the more auto buttons, it will save all of the found solutions. Notes: doesn't work on the web version, if left to run on a big lattice for a long time it will fill up your PC. 
 
-●	More Auto Button: Only works when the auto-solve button is on. Should only be used with photo mode on and if paired with variations, it will take a very long time. It runs over every combination of the amount of soft modes chosen and tries to find a solution to every one of them. Note: you should only choose the starting soft modes, so for example, if you want to go over all of the 3 soft modes combinations, you need to only choose soft mods 1, 2 and 3a.
+●	More Auto: Only works when the auto-solve button is on. Should only be used with photo mode on and if paired with variations, it will take a very long time. It runs over every combination of the amount of soft modes chosen and tries to find a solution to every one of them. Note: you should only choose the starting soft modes, so for example, if you want to go over all of the 3 soft modes combinations, you need to only choose soft mods 1, 2 and 3a.
 
   **Lattice Screen:**
 
